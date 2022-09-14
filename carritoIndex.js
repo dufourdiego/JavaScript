@@ -1,5 +1,9 @@
 const carritoDeCompras = []
 
+const contadorCarrito = document.getElementById("contador-carrito");
+
+
+
 const carritoIndex = (productoId)=>{
 
     const contenedorCarrito = document.getElementById("carrito-contenedor")
@@ -17,9 +21,17 @@ const carritoIndex = (productoId)=>{
         div.innerHTML = `<p>${producto.nombre}</p>
                         <p>Precio: ${producto.precio}</p> 
                         <p id="cantidad${producto.id}">Cantidad: ${producto.cantidad}</p>
-                        <button id="eliminar${producto.id}" class="boton-eliminar" ><i class="fa-solid fa-trash-can"></i></button>`;
-        contenedorCarrito.appendChild(div)
+                        <button onclick="eliminarDelCarrito(${producto.id})" class="boton-eliminar" ><i class="fa-solid fa-trash-can"></i></button>`;
+        contenedorCarrito.appendChild(div);
+        contadorCarrito.innerText = carritoDeCompras.length;
     }
 
+    renderProductosCarrito()
+}
+
+const eliminarDelCarrito = (productoId) => {
+    const item = carritoDeCompras.find( (producto) => producto.id == productoId );
+    const indice = carritoDeCompras.indexOf(item);
+    carritoDeCompras.splice(indice, 1);
     renderProductosCarrito()
 }
