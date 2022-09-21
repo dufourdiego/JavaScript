@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('carrito', JSON.stringify(carrito))
     })
     contadorCarrito.innerText = carrito.length;
-    precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.precio, 0);
+    precioTotal.innerText = carrito.reduce((acc, prod) => acc + (prod.precio*prod.cantidad), 0);
     console.log(contadorCarrito)
     if(carrito.length == 0) {
         contadorCarrito.innerText = 0;
@@ -53,8 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 }
 
 const eliminarDelCarrito = (productoId) => {
-    const item = carrito.find( (producto) => producto.id == productoId );
-    const indice = carrito.indexOf(item);
+    const indice = carrito.findIndex( (producto) => producto.id == productoId );
     carrito.splice(indice, 1);
     actualizarCarrito()
 }
