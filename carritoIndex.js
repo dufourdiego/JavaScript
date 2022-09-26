@@ -1,24 +1,22 @@
-let carrito = []
+let carrito = [];
 const contadorCarrito = document.getElementById("contador-carrito");
 const contenedorCarrito = document.getElementById("carrito-contenedor")
 const precioTotal = document.getElementById("precioTotal")
 
 document.addEventListener('DOMContentLoaded', () => {
-    if(localStorage.getItem('carrito')) {
-        carrito = JSON.parse(localStorage.getItem('carrito'))
+     carrito = JSON.parse(localStorage.getItem('carrito')) || [];   // Utilizo el operador OR ||
         actualizarCarrito()
     }
-})
+)
 
 
     const agregarAlCarrito = (productoId) => {
         const existe = carrito.some(producto => producto.id === productoId)
             if(existe){
                 const producto = carrito.map(producto => {
-                    if(producto.id === productoId){
-                        producto.cantidad++;
-                        // producto.precio = carrito.reduce((acc, prod) => acc + prod.precio, 0);
-                    }
+                    (producto.id === productoId)?   // optimizo el if con operador ternario
+                        producto.cantidad++ 
+                    : "";
                 })
             } else {
         const item  = productos.find( producto => producto.id === productoId )
