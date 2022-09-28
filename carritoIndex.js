@@ -9,6 +9,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 )
 
+// Filtro de búsqueda por producto
+
+document.addEventListener("keyup", (e) => {
+        if(e.target.matches("#buscador")) {
+            document.querySelectorAll(".modal-carrito").forEach((el) =>
+            el.textContent.toLowerCase().includes(e.target.value)
+            ? el.classList.remove("filter")
+            : el.classList.add("filter"))
+    }
+    console.log(e.target.value)
+})
 
     const agregarAlCarrito = (productoId) => {
         const existe = carrito.some(producto => producto.id === productoId)
@@ -23,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         carrito.push(item)
         console.log(carrito);
         item.cantidad = 1;}
-        Swal.fire({
+        Swal.fire({             // Utilizo Sweet alert para avisar que el producto se agregó al carrito
             position: 'top-end',
             icon: 'success',
             title: 'Producto agregado con éxito',

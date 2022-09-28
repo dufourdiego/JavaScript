@@ -13,7 +13,7 @@ cerrarCarrito.addEventListener("click", ()=>{
     modalContendor.classList.remove("modal-active")
 })
 
-vaciarCarrito.addEventListener("click", ()=>{
+vaciarCarrito.addEventListener("click", ()=>{     // Agrego Sweet alert para que el usuario confirme si desea vaciar el carrito
     Swal.fire({
         title: 'Seguro que desea vaciar el carrito?',
         icon: 'warning',
