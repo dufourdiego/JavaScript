@@ -14,10 +14,28 @@ cerrarCarrito.addEventListener("click", ()=>{
 })
 
 vaciarCarrito.addEventListener("click", ()=>{
-    carrito.length = 0;
-    precioTotal.innerText = 0;
-    actualizarCarrito ();
-    localStorage.clear();
+    Swal.fire({
+        title: 'Seguro que desea vaciar el carrito?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, vaciarlo!',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            'Hecho!',
+            'Tu carrito está vacío',
+            'success'
+          )
+          carrito.length = 0;
+          precioTotal.innerText = 0;
+          actualizarCarrito ();
+          localStorage.clear();
+        }
+      })
+    
 })
 
 modalContendor.addEventListener("click", ()=>{

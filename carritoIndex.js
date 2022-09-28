@@ -23,6 +23,13 @@ document.addEventListener('DOMContentLoaded', () => {
         carrito.push(item)
         console.log(carrito);
         item.cantidad = 1;}
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Producto agregado con éxito',
+            showConfirmButton: false,
+            timer: 1500
+          })
         actualizarCarrito();
     }
 
