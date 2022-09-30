@@ -70,7 +70,7 @@ header h1{
 }
 
 .filter {
-  display: none;
+  display: none !important;
 }
 
 .modal-carrito{

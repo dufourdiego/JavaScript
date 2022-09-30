@@ -2,6 +2,7 @@ let carrito = [];
 const contadorCarrito = document.getElementById("contador-carrito");
 const contenedorCarrito = document.getElementById("carrito-contenedor")
 const precioTotal = document.getElementById("precioTotal")
+const buscador = document.getElementById("buscador")
 
 document.addEventListener('DOMContentLoaded', () => {
      carrito = JSON.parse(localStorage.getItem('carrito')) || [];   // Utilizo el operador OR ||
@@ -12,13 +13,16 @@ document.addEventListener('DOMContentLoaded', () => {
 // Filtro de búsqueda por producto
 
 document.addEventListener("keyup", (e) => {
-        if(e.target.matches("#buscador")) {
-            document.querySelectorAll(".modal-carrito").forEach((el) =>
-            el.textContent.toLowerCase().includes(e.target.value)
-            ? el.classList.remove("filter")
-            : el.classList.add("filter"))
+        if(e.target.matches("buscador")) {
+            document.querySelectorAll("card-filter").forEach((producto) =>
+            producto.textContent.includes(e.target.value)
+            ? producto.classList.remove("filter")
+            : producto.classList.add("filter"))
     }
     console.log(e.target.value)
+    
+
+
 })
 
     const agregarAlCarrito = (productoId) => {
