@@ -1,9 +1,14 @@
 // Función que renderiza los productos de mi stock
 
-const mostrarProductos = (productos) => {
+const productos= []
+
+
     const contenedorProductos = document.getElementById("producto-contenedor")
 
-    productos.forEach(producto => {
+    let cargaDom = async () => {
+        let respuesta = await fetch("./stock.json");
+        let respuestaData = await respuesta.json();
+        respuestaData.forEach((producto) => {
         const div = document.createElement("div")
         div.classList.add("card")
         div.innerHTML += `<div class="card card-filter" style="width: 18rem;">
@@ -29,4 +34,4 @@ const mostrarProductos = (productos) => {
 }
 
 
-mostrarProductos(productos)
+cargaDom();
