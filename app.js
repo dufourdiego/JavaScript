@@ -5,10 +5,14 @@ const productos= []
 
     const contenedorProductos = document.getElementById("producto-contenedor")
 
+// Fetch para solicitar Productos al JSON y renderizar el DOM
+
     let cargaDom = async () => {
         let respuesta = await fetch("./stock.json");
         let respuestaData = await respuesta.json();
+        console.log(respuestaData)
         respuestaData.forEach((producto) => {
+            productos.push(producto)
         const div = document.createElement("div")
         div.classList.add("card")
         div.innerHTML += `<div class="card card-filter" style="width: 18rem;">
@@ -27,7 +31,7 @@ const productos= []
 
         boton.addEventListener('click', ()=> {
             agregarAlCarrito(producto.id)
-            
+            console.log(`Mostrando ${producto.id}`)
         })
 
     })

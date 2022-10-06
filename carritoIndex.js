@@ -25,28 +25,28 @@ document.addEventListener("keyup", (e) => {
 
 })
 
-    const agregarAlCarrito = (productoId) => {
-        const existe = carrito.some(producto => producto.id === productoId)
-            if(existe){
-                const producto = carrito.map(producto => {
-                    (producto.id === productoId)?   // optimizo el if con operador ternario
-                        producto.cantidad++ 
-                    : "";
-                })
-            } else {
-        const item  = productos.find( producto => producto.id === productoId )
-        carrito.push(item)
-        console.log(carrito);
-        item.cantidad = 1;}
-        Swal.fire({             // Utilizo Sweet alert para avisar que el producto se agregó al carrito
-            position: 'top-end',
-            icon: 'success',
-            title: 'Producto agregado con éxito',
-            showConfirmButton: false,
-            timer: 1500
-          })
-        actualizarCarrito();
-    }
+const agregarAlCarrito = (productoId) => {
+    const existe = carrito.some(producto => producto.id === productoId)
+        if(existe){
+            const producto = carrito.map(producto => {
+                (producto.id === productoId)?   // optimizo el if con operador ternario
+                    producto.cantidad++ 
+                : "";
+            })
+        } else {
+    const item  = productos.find( producto => producto.id === productoId )
+    carrito.push(item)
+    console.log(carrito);
+    item.cantidad = 1;}
+    Swal.fire({             // Utilizo Sweet alert para avisar que el producto se agregó al carrito
+        position: 'top-end',
+        icon: 'success',
+        title: 'Producto agregado con éxito',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    actualizarCarrito();
+}
 
     const actualizarCarrito = () => {
         contenedorCarrito.innerHTML = "";
