@@ -1,16 +1,21 @@
-const modalContendor = document.querySelector(".modal-container")
+const modalContenedor = document.querySelector(".modal-container")
 const abrirCarrito = document.getElementById("open")
 const cerrarCarrito = document.getElementById("cerrar")
 const vaciarCarrito = document.getElementById("vaciarCarrito")
-
 const modalCarrito = document.querySelector(".modal-carrito")
 
 abrirCarrito.addEventListener("click", ()=>{
-    modalContendor.classList.toggle("modal-active")
+    modalCarrito.classList.add("modal-active")
+    setTimeout(function(){
+    modalContenedor.style.opacity = "1";
+    modalContenedor.style.visibility = "visible";},900)
 } )
 
 cerrarCarrito.addEventListener("click", ()=>{
-    modalContendor.classList.remove("modal-active")
+    modalCarrito.classList.remove("modal-active")
+    modalContenedor.style.opacity = "0";
+    setTimeout(function(){
+    modalContenedor.style.visibility = "hidden";},900)
 })
 
 vaciarCarrito.addEventListener("click", ()=>{     // Agrego Sweet alert para que el usuario confirme si desea vaciar el carrito
@@ -38,7 +43,7 @@ vaciarCarrito.addEventListener("click", ()=>{     // Agrego Sweet alert para que
     
 })
 
-modalContendor.addEventListener("click", ()=>{
+modalContenedor.addEventListener("click", ()=>{
     cerrarCarrito.click()
 })
 
