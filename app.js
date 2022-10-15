@@ -31,7 +31,7 @@ const productos= []
 
         boton.addEventListener('click', ()=> {
             agregarAlCarrito(producto.id)
-            console.log(`Mostrando ${producto.id}`)
+            
         })
 
     })

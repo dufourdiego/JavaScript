@@ -8,14 +8,14 @@ abrirCarrito.addEventListener("click", ()=>{
     modalCarrito.classList.add("modal-active")
     setTimeout(function(){
     modalContenedor.style.opacity = "1";
-    modalContenedor.style.visibility = "visible";},900)
+    modalContenedor.style.visibility = "visible";},500)
 } )
 
 cerrarCarrito.addEventListener("click", ()=>{
     modalCarrito.classList.remove("modal-active")
     modalContenedor.style.opacity = "0";
     setTimeout(function(){
-    modalContenedor.style.visibility = "hidden";},900)
+    modalContenedor.style.visibility = "hidden";},500)
 })
 
 vaciarCarrito.addEventListener("click", ()=>{     // Agrego Sweet alert para que el usuario confirme si desea vaciar el carrito

@@ -1,4 +1,5 @@
 let carrito = [];
+let filtro = [];
 const contadorCarrito = document.getElementById("contador-carrito");
 const contenedorCarrito = document.getElementById("carrito-contenedor")
 const precioTotal = document.getElementById("precioTotal")
@@ -13,17 +14,49 @@ document.addEventListener('DOMContentLoaded', () => {
 // Filtro de búsqueda por producto
 
 document.addEventListener("keyup", (e) => {
-        if(e.target.matches("buscador")) {
-            document.querySelectorAll("card-filter").forEach((producto) =>
-            producto.textContent.includes(e.target.value)
-            ? producto.classList.remove("filter")
-            : producto.classList.add("filter"))
-    }
     console.log(e.target.value)
+            if(e.target.value) {
+            filtro = productos.filter((producto) =>
+            producto.nombre.toLowerCase() === (e.target.value).toLowerCase())
+        console.log(filtro)
+            contenedorProductos.innerHTML = ""
+
+            filtro.forEach((producto) => {
+                
+            const div = document.createElement("div")
+            div.classList.add("card")
+            div.innerHTML = `<div class="card card-filter" style="width: 18rem;">
+                                <img src="${producto.img}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">${producto.nombre}</h5>
+                                    <p class="card-text">${producto.desc}</p>
+                                    <p class="card-text">Precio:$ ${producto.precio}</p>
+                                    <button class="btn btn-primary" id=boton${producto.id}>Comprar</button>
+                                </div>
+                            </div>`
+    
+            contenedorProductos.appendChild(div)
+            
+            const boton = document.getElementById( `boton${producto.id}` )
+    
+            boton.addEventListener('click', ()=> {
+                agregarAlCarrito(producto.id)
+                
+            })
+    
+        })
+    }else {
+        contenedorProductos.innerHTML = ""
+        filtro = [];
+        console.log(filtro)
+        cargaDom();}
+
+})
+    
     
 
 
-})
+
 
 const agregarAlCarrito = (productoId) => {
     const existe = carrito.some(producto => producto.id === productoId)
@@ -36,7 +69,7 @@ const agregarAlCarrito = (productoId) => {
         } else {
     const item  = productos.find( producto => producto.id === productoId )
     carrito.push(item)
-    console.log(carrito);
+    
     item.cantidad = 1;}
     Swal.fire({             // Utilizo Sweet alert para avisar que el producto se agregó al carrito
         position: 'top-end',
@@ -64,7 +97,7 @@ const agregarAlCarrito = (productoId) => {
     })
     contadorCarrito.innerText = carrito.length;
     precioTotal.innerText = carrito.reduce((acc, prod) => acc + (prod.precio*prod.cantidad), 0);
-    console.log(contadorCarrito)
+    
     if(carrito.length == 0) {
         contadorCarrito.innerText = 0;
         precioTotal.innerText = 0;
