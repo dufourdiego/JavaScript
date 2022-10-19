@@ -1,22 +1,21 @@
 const modalContenedor = document.querySelector(".modal-container")
-const abrirCarrito = document.getElementById("open")
+const abrirCarrito = document.querySelector("#open")
 const cerrarCarrito = document.getElementById("cerrar")
 const vaciarCarrito = document.getElementById("vaciarCarrito")
 const modalCarrito = document.querySelector(".modal-carrito")
+const comprarCarrito = document.getElementById("comprarCarrito")
 
 abrirCarrito.addEventListener("click", ()=>{
     modalCarrito.classList.add("modal-active")
-    setTimeout(function(){
     modalContenedor.style.opacity = "1";
-    modalContenedor.style.visibility = "visible";},500)
+    modalContenedor.style.visibility = "visible";
 } )
 
 cerrarCarrito.addEventListener("click", ()=>{
     modalCarrito.classList.remove("modal-active")
     modalContenedor.style.opacity = "0";
-    setTimeout(function(){
-    modalContenedor.style.visibility = "hidden";},500)
-})
+    modalContenedor.style.visibility = "hidden";}
+)
 
 vaciarCarrito.addEventListener("click", ()=>{     // Agrego Sweet alert para que el usuario confirme si desea vaciar el carrito
     Swal.fire({
@@ -42,6 +41,40 @@ vaciarCarrito.addEventListener("click", ()=>{     // Agrego Sweet alert para que
       })
     
 })
+
+comprarCarrito.addEventListener("click", ()=>{     // Agrego Sweet alert para que el usuario confirme si desea vaciar el carrito
+  if(carrito.length){
+  Swal.fire({
+      title: 'Finalizar la compra?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Confirmar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Felicidades!',
+          'Tu compra se realizó con éxito',
+          'success'
+        )
+        carrito.length = 0;
+        precioTotal.innerText = 0;
+        actualizarCarrito ();
+        localStorage.clear();
+      }
+    })
+  }else {
+    Swal.fire({
+      icon: 'error',
+      title: 'Tu carrito está vacío',
+      text: 'Compra cancelada'
+    })
+  }
+    })
+  
+
 
 modalContenedor.addEventListener("click", ()=>{
     cerrarCarrito.click()

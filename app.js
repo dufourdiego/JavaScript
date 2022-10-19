@@ -1,18 +1,22 @@
 // Función que renderiza los productos de mi stock
 
-const productos= []
-
-
-    const contenedorProductos = document.getElementById("producto-contenedor")
+const productos= [];
+let i=0;
+const contenedorProductos = document.getElementById("producto-contenedor")
+const selectorProductos = document.getElementById("buscador")
 
 // Fetch para solicitar Productos al JSON y renderizar el DOM
 
-    let cargaDom = async () => {
-        let respuesta = await fetch("./stock.json");
-        let respuestaData = await respuesta.json();
-        console.log(respuestaData)
-        respuestaData.forEach((producto) => {
-            productos.push(producto)
+let cargaDom = async () => {
+    let respuesta = await fetch("stock.json");
+    let respuestaData = await respuesta.json();
+    renderProductos (respuestaData)
+}
+
+const renderProductos = (item) => {
+    item.forEach((producto) => {
+        productos.push(producto)
+        filtro = productos.map((producto) => producto.nombre);
         const div = document.createElement("div")
         div.classList.add("card")
         div.innerHTML += `<div class="card card-filter" style="width: 18rem;">
@@ -25,17 +29,24 @@ const productos= []
                             </div>
                         </div>`
 
-        contenedorProductos.appendChild(div)
+    contenedorProductos.appendChild(div)
         
-        const boton = document.getElementById( `boton${producto.id}` )
+    const boton = document.getElementById( `boton${producto.id}` )
 
-        boton.addEventListener('click', ()=> {
-            agregarAlCarrito(producto.id)
-            
-        })
+    boton.addEventListener('click', ()=> {
+        agregarAlCarrito(producto.id)
+
+    })
+
+    const option = document.createElement("option")
+        option.classList.add(`filtrado${i+1}`)
+        option.innerText = filtro[i]
+        i++;
+
+        selectorProductos.appendChild(option)
 
     })
 }
 
-
 cargaDom();
+

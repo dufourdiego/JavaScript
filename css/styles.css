@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Francois+One&family=Nunito+Sans&family=Nunito:wght@300&family=Orbitron&display=swap'); /* Tipo de letra para el menú */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/*Estilo de fuente para el Navbar*/
+.my-font {
+  font-family: 'Francois One', sans-serif;
+  opacity: 0.6;
+  font-size: 5 em;
+  }
+.my-font:hover { /* Sombra y transparencia al pasar el mouse por los items del menú*/
+  text-shadow: black;
+  opacity: 1;
+}
+
+/* Tipo de letra para el título */
+.my-font-titles {
+  font-family: 'Francois One', sans-serif;
+  font-size: 4em;
+}
+
+.my-font, .my-fontp {
+  font-family: 'Francois One', sans-serif;
+  color: black;
+  text-decoration: none;
+}
+
+.btn-tse {
+  width: 8vw;
+  min-width: 80px;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Defino color de fondo, posición y padding del body */
+body {
+  background: linear-gradient(to left, #cecedc, #cdd5e6, #d7e4e3);
+  position: relative;
+  min-height: 100vh;
+  padding-top: 100px;
+}
+
+/* Estilo para el logo del carrito */
+.carrito-logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 10px;
+  bottom: 100px;
+  z-index: 150;
+  background-color:#a1a1dc;
+}
+
+.carrito-img{
+  font-size: 3em;
+  margin-right: 5px;
+}
+
+.carrito-count{
+  font-size: 1.8em;
+}
+
+/* Estilo del Logo de la empresa para el Navbar */
+.nav-Logo {
+  width: 5vw;
+  min-width: 60px;
+}
+
+/* Página activa - Letras en mayúsculas */
+.activa {
+  text-transform: uppercase;
+}
+
+/* Colores de barras y botones */
+.bg-tse, .btn-tse {
+  background-color: #a1a1dc;
+}
+
+#producto-contenedor {
+  margin: 90px auto;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+} 
+
+
+.card .card-image .card-title {
+  color: dodgerblue;
+  position: unset;
+}  
+
+.card{
+  margin: 20px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 25px 0px;
+}
+
+/* hacer visible el modal  */
+.modal-active {
+transition: transform 3s;
+transform: translateY(-200%);
+z-index: 5;
+}
+
+.productoEnCarrito {
+border-left: 5px solid lightblue;
+border-bottom-left-radius: 3px;
+border-top-left-radius: 3px;
+margin: 5px 0;
+padding: 5px 10px;
+display: flex;
+justify-content: space-between;
+}
+
+.productoEnCarrito:hover {
+border-left: 5px solid blue;
+background-color: rgba(211, 211, 211, 0.518);
+}
+
+.boton-eliminar {
+background-color: white;
+color: lightblue;
+border: none;
+font-size: 20px;
+}
+
+
+/* Modal */
+.modal-container {
+width: 100%;
+height: 100vh;
+opacity: 0;
+visibility: hidden;
+position: fixed;
+top: 0;
+left: 0;
+z-index: 100;
+background: rgba(0, 0, 0, 0.5);
+display: flex;
+justify-content: center;
+align-items: center;
+
+
+}
+.modal-carrito {
+width: 50%;
+height: 50%;
+max-width: 800px;
+max-height: 90%;
+margin: auto;
+background-color: #fff;
+border-radius: 6px;
+padding: 1rem;
+overflow-x: hidden;
+position: relative;
+transition: transform 3s;
+transform: translateY(0%);
+}
+
+.select{
+  margin: 8px;
+}
+
+.boton{
+  width: 120px;
+  height: 3em;
+  border-radius: 5%;
+  background-color:#a1a1dc;
+}
+.boton:hover{
+  background-color: #bdbddf;
+}
