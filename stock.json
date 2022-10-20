@@ -54,5 +54,45 @@
       "precio": 130000,
       "img": "src/img/video.jpg",
       "cantidad": 8
+    },
+    {
+      "id": 8,
+      "nombre": "Monitor ASUS",
+      "desc": "ASUS 24 pulgadas",
+      "precio": 80000,
+      "img": "src/img/monitor.jpg",
+      "cantidad": 10
+    },
+    {
+      "id": 9,
+      "nombre": "Teclado Gamer",
+      "desc": "Redragon RGB",
+      "precio": 30000,
+      "img": "src/img/teclado.jpg",
+      "cantidad": 15
+    },
+    {
+      "id": 10,
+      "nombre": "Mouse Gamer",
+      "desc": "Redragon USB",
+      "precio": 9000,
+      "img": "src/img/mouse.jpg",
+      "cantidad": 12
+    },
+    {
+      "id": 11,
+      "nombre": "Parlantes Bluetooth",
+      "desc": "Logitech Z607",
+      "precio": 34000,
+      "img": "src/img/parlante.jpg",
+      "cantidad": 6
+    },
+    {
+      "id": 12,
+      "nombre": "Auriculares Gamer",
+      "desc": "HyperX Cloud Stinger Rojo",
+      "precio": 8500,
+      "img": "src/img/auricular.jpg",
+      "cantidad": 12
     }
   ]

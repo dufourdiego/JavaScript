@@ -1,5 +1,3 @@
-// Función que renderiza los productos de mi stock
-
 const productos= [];
 let i=0;
 const contenedorProductos = document.getElementById("producto-contenedor")
@@ -13,10 +11,12 @@ let cargaDom = async () => {
     renderProductos (respuestaData)
 }
 
+// Renderizo los productos de mi stock
+
 const renderProductos = (item) => {
     item.forEach((producto) => {
         productos.push(producto)
-        filtro = productos.map((producto) => producto.nombre);
+        filtro = productos.map((producto) => producto.nombre); // En este array guardo el nombre de cada producto para usarlo en el select
         const div = document.createElement("div")
         div.classList.add("card")
         div.innerHTML += `<div class="card card-filter" style="width: 18rem;">
@@ -37,6 +37,8 @@ const renderProductos = (item) => {
         agregarAlCarrito(producto.id)
 
     })
+
+    // Cargo el nombre de los productos en el select para realizar el filtrado por producto
 
     const option = document.createElement("option")
         option.classList.add(`filtrado${i+1}`)

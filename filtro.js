@@ -1,12 +1,12 @@
 // Filtro de búsqueda por producto
 
 
-
+// Capturo el producto elegido en el select option
 selectorProductos.addEventListener('change', () => {
     let productoElegido = selectorProductos.value;
     console.log(productoElegido)
 
-
+            // Renderizo el producto filtrado
             if(productoElegido != "Todos los productos") {
             let filtroProd = productos.find((producto) =>
             producto.nombre.toLowerCase() === (productoElegido).toLowerCase())
@@ -35,6 +35,7 @@ selectorProductos.addEventListener('change', () => {
     })
 
     }
+    // Quito el filtro - Vuelvo a cargar todos los productos
     else {
             contenedorProductos.innerHTML = ""
             filtroProd = [];

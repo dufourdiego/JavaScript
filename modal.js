@@ -5,6 +5,8 @@ const vaciarCarrito = document.getElementById("vaciarCarrito")
 const modalCarrito = document.querySelector(".modal-carrito")
 const comprarCarrito = document.getElementById("comprarCarrito")
 
+// Escucho los eventos de click para abrir, cerrar, vaciar y comprar los productos del carrito
+
 abrirCarrito.addEventListener("click", ()=>{
     modalCarrito.classList.add("modal-active")
     modalContenedor.style.opacity = "1";
@@ -63,6 +65,9 @@ comprarCarrito.addEventListener("click", ()=>{     // Agrego Sweet alert para qu
         precioTotal.innerText = 0;
         actualizarCarrito ();
         localStorage.clear();
+        contenedorProductos.innerHTML = ""
+        selectorProductos.innerHTML = `<option>Todos los productos</option>`    
+        cargaDom();
       }
     })
   }else {

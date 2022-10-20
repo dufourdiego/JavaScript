@@ -5,6 +5,8 @@ const contenedorCarrito = document.getElementById("carrito-contenedor")
 const precioTotal = document.getElementById("precioTotal")
 const buscador = document.getElementById("buscador")
 
+
+// Traigo los productos agregados al carrito que se almacenaron en el LocalStorage
 document.addEventListener('DOMContentLoaded', () => {
      carrito = JSON.parse(localStorage.getItem('carrito')) || [];   // Utilizo el operador OR ||
         actualizarCarrito()
@@ -34,6 +36,8 @@ const agregarAlCarrito = (productoId) => {
     actualizarCarrito();
 }
 
+    // Función para agregar productos al carrito
+
     const actualizarCarrito = () => {
         contenedorCarrito.innerHTML = "";
         carrito.forEach((producto) => {
@@ -46,11 +50,16 @@ const agregarAlCarrito = (productoId) => {
                         <button onclick="eliminarDelCarrito(${producto.id})" class="boton-eliminar" ><i class="fa-solid fa-trash-can"></i></button>`;
         contenedorCarrito.appendChild(div);
 
-        localStorage.setItem('carrito', JSON.stringify(carrito))
+        localStorage.setItem('carrito', JSON.stringify(carrito)) // Agrego el producto al LocalStorage
     })
+    // Cantidad de productos en el carrito
     contadorCarrito.innerText = carrito.length;
+
+    // Suma del precio total de los productos ingresados al carrito 
     precioTotal.innerText = carrito.reduce((acc, prod) => acc + (prod.precio*prod.cantidad), 0);
     
+
+    // Si no hay productos en el carrito reseteo contador y precio total y vacío el LocalStorage
     if(carrito.length == 0) {
         contadorCarrito.innerText = 0;
         precioTotal.innerText = 0;
@@ -58,6 +67,8 @@ const agregarAlCarrito = (productoId) => {
     }    
 }
 
+
+// Función para eliminar productos del carrito
 const eliminarDelCarrito = (productoId) => {
     const indice = carrito.findIndex( (producto) => producto.id == productoId );
     carrito.splice(indice, 1);
